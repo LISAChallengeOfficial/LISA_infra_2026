@@ -5,7 +5,7 @@ baseCommand: []
 
 requirements:
   DockerRequirement:
-    dockerPull: lisa2025v2
+    dockerPull: lisa2026
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing: []
