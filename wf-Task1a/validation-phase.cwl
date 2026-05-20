@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: v1.0
 class: Workflow
-label: LISA 2025 - Task1
+label: LISA 2026 - Task1a
 
 requirements:
   - class: StepInputExpressionRequirement
@@ -137,7 +137,7 @@ s:author:
   s:email: difan@chla.usc.edu
   s:name: Di Fan
 
-s:codeRepository: https://github.com/LISAChallengeOfficial/LISA_infra
+s:codeRepository: https://github.com/LISAChallengeOfficial/LISA_infra_2026
 s:license: https://spdx.org/licenses/Apache-2.0
 
 $namespaces:
