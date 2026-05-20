@@ -61,7 +61,7 @@ s:author:
   s:email: verena.chung@sagebase.org
   s:name: Verena Chung
 
-s:codeRepository:  https://github.com/LISAChallengeOfficial/LISA_infra
+s:codeRepository:  https://github.com/LISAChallengeOfficial/LISA_infra_2026
 s:license: https://spdx.org/licenses/Apache-2.0
 
 $namespaces:
