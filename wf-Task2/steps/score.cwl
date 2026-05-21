@@ -13,7 +13,7 @@ requirements:
 inputs:
   task:
     type: string
-    default: --task2b
+    default: --task2
     inputBinding:
       position: 1
 
