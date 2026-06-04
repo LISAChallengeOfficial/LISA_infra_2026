@@ -66,13 +66,13 @@ steps:
       - id: evaluation_id
       - id: results
 
-  download_goldstandard:
+  download_input:
     doc: Download goldstandard
     run: |-
       https://raw.githubusercontent.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/v1.4/cwl/synapse-get-tool.cwl
     in:
       - id: synapseid
-        valueFrom: "syn68584853"
+        valueFrom: "syn75283299"
       - id: synapse_config
         source: "#synapseConfig"
     out:
@@ -84,7 +84,7 @@ steps:
       https://raw.githubusercontent.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/v1.4/cwl/synapse-get-tool.cwl
     in:
       - id: synapseid
-        valueFrom: "syn68584853"
+        valueFrom: "syn75271091"
       - id: synapse_config
         source: "#synapseConfig"
     out:
@@ -94,12 +94,12 @@ steps:
     doc: Score submission
     run: steps/score.cwl
     in:
-      segs:
+      prediction:
         source: "#download_submission/filepath"
-      masks:
-        source: "#download_goldstandard/filepath"
       reference:
         source: "#download_reference/filepath"
+      input:
+        source: "#download_input/filepath"      
       output_name:
         valueFrom: "results.json"
     out:
