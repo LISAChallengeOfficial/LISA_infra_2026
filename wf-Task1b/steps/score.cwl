@@ -1,24 +1,23 @@
 #!/usr/bin/env cwl-runner
-cwlVersion: v1.2
+cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: []
+baseCommand: python3
 requirements:
-  DockerRequirement:
-    dockerPull: lisa2026
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
-    listing: []
-  cwltool:CUDARequirement:
-    cudaVersionMin: "12.0"
-    cudaComputeCapability: "8.6"
-    cudaDeviceCountMin: 1
-    cudaDeviceCountMax: 1
+    listing:
+      - $(inputs.docker_script)
 inputs:
+  docker_script:
+    type: File
+    default:
+      class: File
+      location: score_docker.py
+    inputBinding:
+      position: 0
   task:
     type: string
-    default: --task1b
-    inputBinding:
-      position: 1
+    default: "--task1b"
   prediction:
     type: File
     inputBinding:
@@ -50,5 +49,3 @@ outputs:
     glob: results.json
     outputEval: $(JSON.parse(self[0].contents)['submission_status'])
     loadContents: true
-$namespaces:
-  cwltool: http://commonwl.org/cwltool#
