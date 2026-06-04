@@ -78,6 +78,18 @@ steps:
     out:
       - id: filepath 
 
+  download_reference:
+    doc: Download reference
+    run: |-
+      https://raw.githubusercontent.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/v1.4/cwl/synapse-get-tool.cwl
+    in:
+      - id: synapseid
+        valueFrom: "syn68584853"
+      - id: synapse_config
+        source: "#synapseConfig"
+    out:
+      - id: filepath
+
   score:
     doc: Score submission
     run: steps/score.cwl
@@ -86,6 +98,8 @@ steps:
         source: "#download_submission/filepath"
       masks:
         source: "#download_goldstandard/filepath"
+      reference:
+        source: "#download_reference/filepath"
       output_name:
         valueFrom: "results.json"
     out:
