@@ -16,22 +16,28 @@ inputs:
     inputBinding:
       position: 1
 
-  segs:
+  prediction:
     type: File
     inputBinding:
       position: 2
       prefix: -p
 
-  masks:
+  reference:
     type: File
     inputBinding:
       position: 3
-      prefix: -g
+      prefix: -r
+
+  input:
+    type: File
+    inputBinding:
+      position: 4
+      prefix: -i
 
   output_name:
     type: string
     inputBinding:
-      position: 4
+      position: 5
       prefix: -o
 
 outputs:
