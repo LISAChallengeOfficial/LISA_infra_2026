@@ -37,17 +37,25 @@ def main(args):
     output_dir = os.path.join(cwd, "output")
     os.makedirs(output_dir, exist_ok=True)
 
-    # Resolve host paths for the three inputs.
-    prediction = os.path.abspath(args.prediction)
-    reference = os.path.abspath(args.reference)
-    input_file = os.path.abspath(args.input)
+    # Stage the three inputs into dirs under cwd. cwd is the toil-managed
+    # working dir, whose host<->container path mapping is consistent, so
+    # volume mounts requested via the SDK resolve correctly under DinD.
+    # (Mounting the toil-provided input paths directly does NOT work: those
+    # paths exist inside this job container but not at the same location on
+    # the host daemon that actually performs the mount.)
+    pred_host = os.path.join(cwd, "in_pred")
+    ref_host = os.path.join(cwd, "in_ref")
+    inp_host = os.path.join(cwd, "in_input")
+    for d in (pred_host, ref_host, inp_host):
+        os.makedirs(d, exist_ok=True)
 
-    # Mount each input file's PARENT dir read-only, then point the container at
-    # the file inside that mount. Mounting the parent keeps the original
-    # filename (so LISAHF case-id parsing still works) and handles zips/dirs.
-    pred_host = os.path.dirname(prediction)
-    ref_host = os.path.dirname(reference)
-    inp_host = os.path.dirname(input_file)
+    pred_name = os.path.basename(args.prediction)
+    ref_name = os.path.basename(args.reference)
+    inp_name = os.path.basename(args.input)
+
+    shutil.copy2(os.path.abspath(args.prediction), os.path.join(pred_host, pred_name))
+    shutil.copy2(os.path.abspath(args.reference), os.path.join(ref_host, ref_name))
+    shutil.copy2(os.path.abspath(args.input), os.path.join(inp_host, inp_name))
 
     volumes = {
         output_dir: {"bind": "/score_output", "mode": "rw"},
@@ -56,9 +64,9 @@ def main(args):
         inp_host: {"bind": "/in_input", "mode": "ro"},
     }
 
-    pred_in_container = "/in_pred/" + os.path.basename(prediction)
-    ref_in_container = "/in_ref/" + os.path.basename(reference)
-    inp_in_container = "/in_input/" + os.path.basename(input_file)
+    pred_in_container = "/in_pred/" + pred_name
+    ref_in_container = "/in_ref/" + ref_name
+    inp_in_container = "/in_input/" + inp_name
     out_in_container = "/score_output/results.json"
 
     command = [
