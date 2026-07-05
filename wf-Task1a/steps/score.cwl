@@ -4,7 +4,7 @@ baseCommand: []
 
 requirements:
   DockerRequirement:
-    dockerPull: lisa2025v2
+    dockerPull: lisa2026
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing: []
@@ -12,7 +12,7 @@ requirements:
 inputs:
   task:
     type: string
-    default: --task1
+    default: --task1a
     inputBinding:
       position: 1
 
