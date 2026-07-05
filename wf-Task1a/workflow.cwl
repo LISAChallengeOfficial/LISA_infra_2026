@@ -89,7 +89,7 @@ steps:
     in:
       # TODO: replace `valueFrom` with the Synapse ID to the challenge goldstandard
       - id: synapseid
-        valueFrom: "syn68815418"
+        valueFrom: "syn76101210"
       - id: synapse_config
         source: "#synapseConfig"
     out:
@@ -132,7 +132,7 @@ steps:
       https://raw.githubusercontent.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/v1.4/cwl/synapse-get-tool.cwl
     in:
       - id: synapseid
-        valueFrom: "syn68814353"
+        valueFrom: "syn76101212"
       - id: synapse_config
         source: "#synapseConfig"
     out:
