@@ -94,7 +94,7 @@ requirements:
               f"Hello {name},\n\n",
               f"Your submission (id: {sub.id}) was successfully received and has generated the expected file.",
               "\n\nThank you for your participation!",
-              "\n\nSincerely,\nChallenge Administrator"
+              "\n\nSincerely,\nThe LISA 2026 Challenge Organizers"
             ]
           else:
             subject = f"Issue with your submission to '{evaluation.name}'"
