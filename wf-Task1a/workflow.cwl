@@ -188,6 +188,20 @@ steps:
       - id: uploaded_file_version
       - id: results
 
+  email_score:
+    run: steps/email.cwl
+    in:
+      - id: submissionid
+        source: "#submissionId"
+      - id: synapse_config
+        source: "#synapseConfig"
+      - id: results
+        source: "#run_docker/results_csv"
+      # OPTIONAL: add annotations to be withheld from participants to `[]`
+      # - id: private_annotations
+      #   default: []
+    out: []
+
 
  
  
