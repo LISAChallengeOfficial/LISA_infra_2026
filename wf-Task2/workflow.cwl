@@ -2,7 +2,7 @@
 
 cwlVersion: v1.0
 class: Workflow
-label: LISA 2025 Task 2a
+label: LISA 2026 Task 2
 doc: >
   BRIEF DESCRIPTION ABOUT THE CHALLENGE, e.g.
   This workflow will run and evaluate Docker submissions to the
