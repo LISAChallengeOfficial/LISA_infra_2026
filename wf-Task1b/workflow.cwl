@@ -2,7 +2,7 @@
 
 cwlVersion: v1.0
 class: Workflow
-label: LISA 2026 Task 2
+label: LISA 2026 Task 1b
 doc: >
   BRIEF DESCRIPTION ABOUT THE CHALLENGE, e.g.
   This workflow will run and evaluate Docker submissions to the
@@ -127,17 +127,6 @@ steps:
       - results_zip
       - results_json
 
-  download_goldstandard:
-    doc: Download goldstandard
-    run: |-
-      https://raw.githubusercontent.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/v1.4/cwl/synapse-get-tool.cwl
-    in:
-      - id: synapseid
-        valueFrom: "syn76102010"
-      - id: synapse_config
-        source: "#synapseConfig"
-    out:
-      - id: filepath 
 
   download_reference:
     doc: Download reference
