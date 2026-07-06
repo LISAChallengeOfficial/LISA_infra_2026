@@ -156,7 +156,7 @@ steps:
     run: steps/score.cwl
     in:
       prediction:
-        source: "#download_submission/filepath"
+        source: "#run_docker/results_zip"
       reference:
         source: "#download_reference/filepath"
       input:
