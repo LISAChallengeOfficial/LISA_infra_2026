@@ -195,7 +195,7 @@ steps:
       - id: synapse_config
         source: "#synapseConfig"
       - id: results
-        source: "#run_docker/results_csv"
+        source: "#run_docker/results_json"
       # OPTIONAL: add annotations to be withheld from participants to `[]`
       # - id: private_annotations
       #   default: []
