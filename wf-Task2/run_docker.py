@@ -234,7 +234,7 @@ def main(syn, args):
     # CWL has a limit of the array of files it can accept in a folder
     # therefore creating a tarball is sometimes necessary
     # tar(output_dir, 'outputs.tar.gz')
-    '''
+    
     output_results = {"predictions": []}
     for f in os.listdir(output_dir):
         if f.endswith(".nii") or f.endswith(".nii.gz"):
@@ -246,7 +246,7 @@ def main(syn, args):
     results_json_path = os.path.join(output_dir, "results.json")
     with open(results_json_path, "w") as f:
         json.dump(output_results, f)
-    '''
+    
     nii_files = sorted(
     f for f in os.listdir(output_dir) if f.endswith(('.nii', '.nii.gz'))
 )
