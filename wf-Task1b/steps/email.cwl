@@ -79,13 +79,13 @@ requirements:
             message = [f"Hello {name},\n\n",
                       f"Your submission (id: {sub.id}) was successfully received and contains 114 .nii.gz files as expected.",
                       "\n\nThank you for your participation!",
-                      "\n\nSincerely,\nChallenge Administrator"]
+                      "\n\nSincerely,\nThe LISA 2026 Challenge Organizers"]
           else:
             subject = f"Issue with your submission to '{evaluation.name}'"
             message = [f"Hello {name},\n\n",
                       f"Your submission (id: {sub.id}) contains {num_files} .nii.gz file(s), but we expected exactly 114.",
                       "\n\nPlease double-check your submission and re-upload it if needed.",
-                      "\n\nSincerely,\nChallenge Administrator"]
+                      "\n\nSincerely,\nThe LISA 2026 Challenge Organizers"]
 
           syn.sendMessage(
                   userIds=[participantid],
