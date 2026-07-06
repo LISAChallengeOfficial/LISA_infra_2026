@@ -139,14 +139,28 @@ steps:
     out:
       - id: filepath 
 
+  download_reference:
+    doc: Download reference
+    run: |-
+      https://raw.githubusercontent.com/Sage-Bionetworks-Workflows/cwl-tool-synapseclient/v1.4/cwl/synapse-get-tool.cwl
+    in:
+      - id: synapseid
+        valueFrom: "syn75284465"
+      - id: synapse_config
+        source: "#synapseConfig"
+    out:
+      - id: filepath
+
   score:
     doc: Score submission
     run: steps/score.cwl
     in:
-      segs:
-        source: "#run_docker/results_zip"
-      masks:
-        source: "#download_goldstandard/filepath"
+      prediction:
+        source: "#download_submission/filepath"
+      reference:
+        source: "#download_reference/filepath"
+      input:
+        source: "#download_input/filepath"      
       output_name:
         valueFrom: "results.json"
     out:
