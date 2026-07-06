@@ -1,39 +1,43 @@
+#!/usr/bin/env cwl-runner
 cwlVersion: v1.0
 class: CommandLineTool
-baseCommand: []
-
+baseCommand: python3
 requirements:
-  DockerRequirement:
-    dockerPull: lisa2026
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
-    listing: []
-
+    listing:
+      - $(inputs.docker_script)
 inputs:
+  docker_script:
+    type: File
+    default:
+      class: File
+      location: score_docker.py
+    inputBinding:
+      position: 0
   task:
     type: string
-    default: --task2
-    inputBinding:
-      position: 1
-
-  segs:
+    default: "--task1b"
+  prediction:
     type: File
     inputBinding:
       position: 2
       prefix: -p
-
-  masks:
+  reference:
     type: File
     inputBinding:
       position: 3
-      prefix: -g
-
+      prefix: -r
+  input:
+    type: File
+    inputBinding:
+      position: 4
+      prefix: -i
   output_name:
     type: string
     inputBinding:
-      position: 4
+      position: 5
       prefix: -o
-
 outputs:
 - id: results
   type: File
@@ -45,6 +49,3 @@ outputs:
     glob: results.json
     outputEval: $(JSON.parse(self[0].contents)['submission_status'])
     loadContents: true
-
-
-
