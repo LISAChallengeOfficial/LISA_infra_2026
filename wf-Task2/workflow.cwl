@@ -125,6 +125,7 @@ steps:
           location: "run_docker.py"
     out:
       - results_zip
+      - results_json
 
   download_goldstandard:
     doc: Download goldstandard
