@@ -59,7 +59,6 @@ outputs:
     type: File
     outputBinding:
       glob: output/results.zip
-outputs:
   results_json:
     type: File
     outputBinding:
