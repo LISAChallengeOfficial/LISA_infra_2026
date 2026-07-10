@@ -74,16 +74,16 @@ requirements:
           
           #nii_files = glob.glob(os.path.join(args.results, "*.nii.gz"))
           #num_files = len(nii_files)
-          if num_files == 114:
+          if num_files == 50:
             subject = f"Submission to '{evaluation.name}' received!"
             message = [f"Hello {name},\n\n",
-                      f"Your submission (id: {sub.id}) was successfully received and contains 114 .nii.gz files as expected.",
+                      f"Your submission (id: {sub.id}) was successfully received and contains 50 .nii.gz files as expected.",
                       "\n\nThank you for your participation!",
                       "\n\nSincerely,\nThe LISA 2026 Challenge Organizers"]
           else:
             subject = f"Issue with your submission to '{evaluation.name}'"
             message = [f"Hello {name},\n\n",
-                      f"Your submission (id: {sub.id}) contains {num_files} .nii.gz file(s), but we expected exactly 114.",
+                      f"Your submission (id: {sub.id}) contains {num_files} .nii.gz file(s), but we expected exactly 50.",
                       "\n\nPlease double-check your submission and re-upload it if needed.",
                       "\n\nSincerely,\nThe LISA 2026 Challenge Organizers"]
 
